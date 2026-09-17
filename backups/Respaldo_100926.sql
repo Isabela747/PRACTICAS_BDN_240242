@@ -1,3 +1,6 @@
+CREATE DATABASE IF NOT EXISTS db_test_7b;
+USE db_test_7b;
+
 -- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: db_test_7b
