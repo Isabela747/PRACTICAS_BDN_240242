@@ -78,6 +78,29 @@ LOCK TABLES `tb_users` WRITE;
 INSERT INTO `tb_users` VALUES (2,'240242@utxicotepec.edu.mx','Margaret Isabela','871534c2971fceb021437786bc940bd2','2026-09-10 10:24:59',NULL,NULL,_binary ''),(3,'240080@utxicotepec.edu.mx','Jhonatan Eliel','871534c2971fceb021437786bc940bd2','2026-09-10 10:26:34',NULL,NULL,_binary ''),(4,'240755@utxicotepec.edu.mx','Sarita','871534c2971fceb021437786bc940bd2','2026-09-10 10:27:01',NULL,NULL,_binary ''),(5,'240497@utxicotepec.edu.mx','Harold','871534c2971fceb021437786bc940bd2','2026-09-10 10:27:35',NULL,NULL,_binary '');
 /*!40000 ALTER TABLE `tb_users` ENABLE KEYS */;
 UNLOCK TABLES;
+
+
+
+DROP TABLE IF EXISTS `tb_productos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tb_productos` (
+  `ID` int NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(100) NOT NULL,
+  `descripcion` varchar(255) DEFAULT NULL,
+  `precio` decimal(10,2) NOT NULL,
+  `stock` int NOT NULL DEFAULT 0,
+  `categoria` varchar(100) DEFAULT NULL,
+  `imagen` varchar(255) DEFAULT NULL,
+  `creation_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `last_update` datetime DEFAULT NULL,
+  `status` bit(1) DEFAULT b'1',
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+
+
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
