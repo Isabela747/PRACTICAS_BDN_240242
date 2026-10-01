@@ -4,7 +4,7 @@ CREATE USER IF NOT EXISTS 'margaret.rojas'@'%' IDENTIFIED BY '240242';
 CREATE USER IF NOT EXISTS 'osmar.gael'@'%' IDENTIFIED BY '240036';
 CREATE USER IF NOT EXISTS 'jhon.ibarra'@'%' IDENTIFIED BY '240080';
 CREATE USER IF NOT EXISTS 'dara.gomez'@'%' IDENTIFIED BY '240765';
-CREATE USER IF NOT EXISTS ''@'%' IDENTIFIED BY '240765';
+CREATE USER IF NOT EXISTS 'jenn.canales'@'%' IDENTIFIED BY '240556';
 
 
 
@@ -69,7 +69,7 @@ TO 'osmar.gael'@'%';
 
 
 GRANT 'seller'
-TO 'jhon.ibarra'@'%';
+TO 'jenn.canales'@'%';
 
 
 /* ACTIVAR ROLES POR DEFECTO */
@@ -87,7 +87,7 @@ SET DEFAULT ROLE 'seller'
 TO 'osmar.gael'@'%';
 
 SET DEFAULT ROLE 'seller'
-TO 'jhon.ibarra'@'%';
+TO 'jenn.canales'@'%';
 
 
 /* Mostrar los usuarios creados */

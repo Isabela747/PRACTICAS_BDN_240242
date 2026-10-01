@@ -1,4 +1,4 @@
-LOAD DATA LOCAL INFILE 'C:\Users\ti_la\Downloads\archivo_desde_id_13.csv'
+LOAD DATA LOCAL INFILE 'C:/Users/ti_la/Documents/PRACTICAS_BDN_240242/seeds/archivo_productos_id_12_adaptado.csv'
 INTO TABLE tb_products
 CHARACTER SET utf8mb4
 FIELDS TERMINATED BY ','
