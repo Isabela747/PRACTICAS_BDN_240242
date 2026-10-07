@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.46, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: db_test_7b
 -- ------------------------------------------------------
--- Server version	8.0.36
+-- Server version	8.0.46
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -329,8 +329,17 @@ SET @saved_cs_client     = @@character_set_client;
  1 AS `id`,
  1 AS `nombre`,
  1 AS `descripcion`,
+ 1 AS `precio`,
+ 1 AS `stock`,
+ 1 AS `categoria`,
+ 1 AS `creation_date`,
+ 1 AS `last_update`,
+ 1 AS `status`,
  1 AS `inserted_by`,
- 1 AS `operation_date`*/;
+ 1 AS `roles`,
+ 1 AS `operation_description`,
+ 1 AS `operation_date`,
+ 1 AS `operation_status`*/;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -369,7 +378,7 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `vw_trazabilidad_products` AS select `p`.`ID` AS `id`,`p`.`nombre` AS `nombre`,`p`.`descripcion` AS `descripcion`,coalesce(`first_log`.`db_user`,'Sin usuario') AS `inserted_by`,`first_log`.`operation_date` AS `operation_date` from (`tb_products` `p` left join (select `l1`.`product_id_extracted` AS `product_id_extracted`,`l1`.`db_user` AS `db_user`,`l1`.`operation_date` AS `operation_date` from (`tb_logs` `l1` join (select `tb_logs`.`product_id_extracted` AS `product_id_extracted`,min(`tb_logs`.`ID`) AS `min_id` from `tb_logs` where (`tb_logs`.`table_name` = 'tb_products') group by `tb_logs`.`product_id_extracted`) `l2` on((`l1`.`ID` = `l2`.`min_id`)))) `first_log` on((`p`.`ID` = `first_log`.`product_id_extracted`))) */;
+/*!50001 VIEW `vw_trazabilidad_products` AS select `p`.`ID` AS `id`,`p`.`nombre` AS `nombre`,`p`.`descripcion` AS `descripcion`,`p`.`precio` AS `precio`,`p`.`stock` AS `stock`,`p`.`categoria` AS `categoria`,`p`.`creation_date` AS `creation_date`,`p`.`last_update` AS `last_update`,`p`.`status` AS `status`,`b`.`db_user` AS `inserted_by`,coalesce(group_concat(distinct `re`.`FROM_USER` order by `re`.`FROM_USER` ASC separator ', '),'Sin rol') AS `roles`,`b`.`table_description` AS `operation_description`,`b`.`operation_date` AS `operation_date`,`b`.`operation_status` AS `operation_status` from ((`tb_products` `p` join `tb_logs` `b` on((`b`.`table_description` like concat('%ID: ',`p`.`ID`,',%')))) left join `mysql`.`role_edges` `re` on((`re`.`TO_USER` = substring_index(`b`.`db_user`,'@',1)))) where ((`b`.`table_operation` = 'Create') and (`b`.`table_name` = 'tb_products')) group by `p`.`ID`,`p`.`nombre`,`p`.`descripcion`,`p`.`precio`,`p`.`stock`,`p`.`categoria`,`p`.`creation_date`,`p`.`last_update`,`p`.`status`,`b`.`db_user`,`b`.`table_description`,`b`.`operation_date`,`b`.`operation_status` */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -401,4 +410,4 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-10-01 13:24:31
+-- Dump completed on 2026-10-04 22:20:09
