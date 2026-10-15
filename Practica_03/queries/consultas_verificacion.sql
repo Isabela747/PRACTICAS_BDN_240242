@@ -7,7 +7,7 @@ SHOW TABLES;
 SHOW TRIGGERS FROM db_test_7b;
 
 -- 3. Cuantos registros existen en la tabla users?
-SELECT COUNT(*) AS total_registros FROM tb_users;
+SELECT COUNT(*) AS total_registros FROM tb_users; 
 
 -- 4. Cuantos registros existen en la tabla bitacora?
 SELECT COUNT(*) AS total_registros FROM tb_logs;
