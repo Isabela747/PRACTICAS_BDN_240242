@@ -46,6 +46,10 @@ GRANT SELECT, INSERT, UPDATE
 ON db_test_7b.tbc_categories
 TO 'support';
 
+GRANT SELECT, INSERT, UPDATE
+ON db_test_7b.tbd_products_categories
+TO 'support';
+
 
 /* seller */
 GRANT SELECT, INSERT, UPDATE
