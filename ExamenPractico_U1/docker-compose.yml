@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  # Servicio PostgreSQL
+  postgres_240242:
+    image: postgres:15-alpine
+    container_name: postgres_240242
+    restart: always
+    environment:
+      POSTGRES_DB: db_test_7b
+      POSTGRES_USER: margaret.rojas
+      POSTGRES_PASSWORD: "1234"
+    ports:
+      - "40242:5432"
+    volumes:
+      - postgres_data_240242:/var/lib/postgresql/data
+
+  # Servicio pgAdmin
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin_240241
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "margaret.rojas@utxicotepec.edu.mx"
+      PGADMIN_DEFAULT_PASSWORD: "1234"
+      PGADMIN_CONFIG_SERVER_MODE: "True"
+    ports:
+      - "40241:80"
+    depends_on:
+      - postgres_240242
+
+  # Servicio MySQL
+  mysql_240242:
+    image: mysql:8.0
+    container_name: mysql_240242
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: "1234"
+      MYSQL_DATABASE: db_test_7b
+      MYSQL_USER: margaret.rojas
+      MYSQL_PASSWORD: "1234"
+    ports:
+      - "40243:3306"   
+    volumes:
+      - mysql_data_240242:/var/lib/mysql
+
+volumes:
+  postgres_data_240242:
+    driver: local
+  mysql_data_240242:
+    driver: local
