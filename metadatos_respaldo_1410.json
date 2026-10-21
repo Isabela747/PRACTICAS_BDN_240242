@@ -1,0 +1,1395 @@
+{
+  "backup": "respaldo_1410.sql",
+  "dialect": "MySQL dump 10.13, MySQL Server 8.0.46",
+  "database": "db_test_7b",
+  "tables": [
+    {
+      "name": "tb_carts",
+      "columns": [
+        {
+          "name": "ID",
+          "type": "int unsigned",
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "definition": "int unsigned NOT NULL AUTO_INCREMENT",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": true,
+          "generated": null,
+          "charset": null,
+          "collation": null,
+          "comment": null,
+          "key": [
+            "pk"
+          ]
+        },
+        {
+          "name": "user_ID",
+          "type": "int",
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "definition": "int NOT NULL",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "generated": null,
+          "charset": null,
+          "collation": null,
+          "comment": null,
+          "key": [
+            "fk",
+            "uk"
+          ]
+        },
+        {
+          "name": "status",
+          "type": "bit(1)",
+          "length": "1",
+          "precision": null,
+          "scale": null,
+          "definition": "bit(1) DEFAULT b'1'",
+          "nullable": true,
+          "default": "b'1'",
+          "autoIncrement": false,
+          "generated": null,
+          "charset": null,
+          "collation": null,
+          "comment": null
+        },
+        {
+          "name": "creation_date",
+          "type": "datetime",
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "definition": "datetime NOT NULL DEFAULT CURRENT_TIMESTAMP",
+          "nullable": false,
+          "default": "CURRENT_TIMESTAMP",
+          "autoIncrement": false,
+          "generated": null,
+          "charset": null,
+          "collation": null,
+          "comment": null
+        },
+        {
+          "name": "last_update",
+          "type": "datetime",
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "definition": "datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP",
+          "nullable": true,
+          "default": "NULL",
+          "autoIncrement": false,
+          "generated": null,
+          "charset": null,
+          "collation": null,
+          "comment": null
+        }
+      ],
+      "primaryKey": [
+        "ID"
+      ],
+      "indexes": [
+        {
+          "name": "uk_cart_user",
+          "unique": true,
+          "columns": [
+            "user_ID"
+          ]
+        }
+      ],
+      "foreignKeys": [
+        {
+          "name": "tb_carts_ibfk_1",
+          "columns": [
+            "user_ID"
+          ],
+          "table": "tb_users",
+          "referencedColumns": [
+            "ID"
+          ]
+        }
+      ],
+      "engine": "InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "rowCount": {
+        "value": 0,
+        "status": "reconstructed from all INSERT tuples; not verified with restored database COUNT(*)",
+        "method": "SQL INSERT tuple count; no UPDATE, DELETE or REPLACE statements detected"
+      }
+    },
+    {
+      "name": "tb_logs",
+      "columns": [
+        {
+          "name": "ID",
+          "type": "int",
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "definition": "int NOT NULL AUTO_INCREMENT",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": true,
+          "generated": null,
+          "charset": null,
+          "collation": null,
+          "comment": null,
+          "key": [
+            "pk"
+          ]
+        },
+        {
+          "name": "table_name",
+          "type": "varchar(80)",
+          "length": "80",
+          "precision": null,
+          "scale": null,
+          "definition": "varchar(80) NOT NULL",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "generated": null,
+          "charset": null,
+          "collation": null,
+          "comment": null
+        },
+        {
+          "name": "table_operation",
+          "type": "enum('Create','Read','Update','Delete')",
+          "length": "'Create','Read','Update','Delete'",
+          "precision": null,
+          "scale": null,
+          "definition": "enum('Create','Read','Update','Delete') DEFAULT NULL",
+          "nullable": true,
+          "default": "NULL",
+          "autoIncrement": false,
+          "generated": null,
+          "charset": null,
+          "collation": null,
+          "comment": null
+        },
+        {
+          "name": "db_user",
+          "type": "varchar(80)",
+          "length": "80",
+          "precision": null,
+          "scale": null,
+          "definition": "varchar(80) NOT NULL",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "generated": null,
+          "charset": null,
+          "collation": null,
+          "comment": null
+        },
+        {
+          "name": "operation_date",
+          "type": "datetime",
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "definition": "datetime NOT NULL DEFAULT CURRENT_TIMESTAMP",
+          "nullable": false,
+          "default": "CURRENT_TIMESTAMP",
+          "autoIncrement": false,
+          "generated": null,
+          "charset": null,
+          "collation": null,
+          "comment": null
+        },
+        {
+          "name": "table_description",
+          "type": "text",
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "definition": "text NOT NULL",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "generated": null,
+          "charset": null,
+          "collation": null,
+          "comment": null
+        },
+        {
+          "name": "operation_status",
+          "type": "bit(1)",
+          "length": "1",
+          "precision": null,
+          "scale": null,
+          "definition": "bit(1) DEFAULT b'1'",
+          "nullable": true,
+          "default": "b'1'",
+          "autoIncrement": false,
+          "generated": null,
+          "charset": null,
+          "collation": null,
+          "comment": null
+        },
+        {
+          "name": "product_id_extracted",
+          "type": "int",
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "definition": "int GENERATED ALWAYS AS (cast(regexp_substr(regexp_substr(`table_description`,_utf8mb4'ID: [0-9]+'),_utf8mb4'[0-9]+') as unsigned)) STORED",
+          "nullable": true,
+          "default": null,
+          "autoIncrement": false,
+          "generated": "GENERATED ALWAYS AS (cast(regexp_substr(regexp_substr(`table_description`,_utf8mb4'ID: [0-9]+'),_utf8mb4'[0-9]+') as unsigned)) STORED",
+          "charset": null,
+          "collation": null,
+          "comment": null
+        }
+      ],
+      "primaryKey": [
+        "ID"
+      ],
+      "indexes": [
+        {
+          "name": "idx_logs_extracted_id",
+          "unique": false,
+          "columns": [
+            "table_name",
+            "product_id_extracted",
+            "ID"
+          ]
+        }
+      ],
+      "foreignKeys": [],
+      "engine": "InnoDB AUTO_INCREMENT=10136 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "rowCount": {
+        "value": 10135,
+        "status": "reconstructed from all INSERT tuples; not verified with restored database COUNT(*)",
+        "method": "SQL INSERT tuple count; no UPDATE, DELETE or REPLACE statements detected"
+      }
+    },
+    {
+      "name": "tb_products",
+      "columns": [
+        {
+          "name": "ID",
+          "type": "int",
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "definition": "int NOT NULL AUTO_INCREMENT",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": true,
+          "generated": null,
+          "charset": null,
+          "collation": null,
+          "comment": null,
+          "key": [
+            "pk"
+          ]
+        },
+        {
+          "name": "nombre",
+          "type": "varchar(100)",
+          "length": "100",
+          "precision": null,
+          "scale": null,
+          "definition": "varchar(100) NOT NULL",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "generated": null,
+          "charset": null,
+          "collation": null,
+          "comment": null
+        },
+        {
+          "name": "descripcion",
+          "type": "varchar(255)",
+          "length": "255",
+          "precision": null,
+          "scale": null,
+          "definition": "varchar(255) DEFAULT NULL",
+          "nullable": true,
+          "default": "NULL",
+          "autoIncrement": false,
+          "generated": null,
+          "charset": null,
+          "collation": null,
+          "comment": null
+        },
+        {
+          "name": "precio",
+          "type": "decimal(10,2)",
+          "length": null,
+          "precision": "10",
+          "scale": "2",
+          "definition": "decimal(10,2) NOT NULL",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "generated": null,
+          "charset": null,
+          "collation": null,
+          "comment": null
+        },
+        {
+          "name": "stock",
+          "type": "int",
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "definition": "int NOT NULL DEFAULT '0'",
+          "nullable": false,
+          "default": "'0'",
+          "autoIncrement": false,
+          "generated": null,
+          "charset": null,
+          "collation": null,
+          "comment": null
+        },
+        {
+          "name": "categoria",
+          "type": "varchar(100)",
+          "length": "100",
+          "precision": null,
+          "scale": null,
+          "definition": "varchar(100) DEFAULT NULL",
+          "nullable": true,
+          "default": "NULL",
+          "autoIncrement": false,
+          "generated": null,
+          "charset": null,
+          "collation": null,
+          "comment": null
+        },
+        {
+          "name": "creation_date",
+          "type": "datetime",
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "definition": "datetime NOT NULL DEFAULT CURRENT_TIMESTAMP",
+          "nullable": false,
+          "default": "CURRENT_TIMESTAMP",
+          "autoIncrement": false,
+          "generated": null,
+          "charset": null,
+          "collation": null,
+          "comment": null
+        },
+        {
+          "name": "last_update",
+          "type": "datetime",
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "definition": "datetime DEFAULT NULL",
+          "nullable": true,
+          "default": "NULL",
+          "autoIncrement": false,
+          "generated": null,
+          "charset": null,
+          "collation": null,
+          "comment": null
+        },
+        {
+          "name": "status",
+          "type": "bit(1)",
+          "length": "1",
+          "precision": null,
+          "scale": null,
+          "definition": "bit(1) DEFAULT b'1'",
+          "nullable": true,
+          "default": "b'1'",
+          "autoIncrement": false,
+          "generated": null,
+          "charset": null,
+          "collation": null,
+          "comment": null
+        }
+      ],
+      "primaryKey": [
+        "ID"
+      ],
+      "indexes": [],
+      "foreignKeys": [],
+      "engine": "InnoDB AUTO_INCREMENT=5017 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "rowCount": {
+        "value": 5007,
+        "status": "reconstructed from all INSERT tuples; not verified with restored database COUNT(*)",
+        "method": "SQL INSERT tuple count; no UPDATE, DELETE or REPLACE statements detected"
+      }
+    },
+    {
+      "name": "tb_users",
+      "columns": [
+        {
+          "name": "ID",
+          "type": "int",
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "definition": "int NOT NULL AUTO_INCREMENT",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": true,
+          "generated": null,
+          "charset": null,
+          "collation": null,
+          "comment": null,
+          "key": [
+            "pk"
+          ]
+        },
+        {
+          "name": "email",
+          "type": "varchar(100)",
+          "length": "100",
+          "precision": null,
+          "scale": null,
+          "definition": "varchar(100) NOT NULL",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "generated": null,
+          "charset": null,
+          "collation": null,
+          "comment": null,
+          "key": [
+            "uk"
+          ]
+        },
+        {
+          "name": "nick",
+          "type": "varchar(50)",
+          "length": "50",
+          "precision": null,
+          "scale": null,
+          "definition": "varchar(50) NOT NULL",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "generated": null,
+          "charset": null,
+          "collation": null,
+          "comment": null,
+          "key": [
+            "uk"
+          ]
+        },
+        {
+          "name": "password",
+          "type": "varchar(255)",
+          "length": "255",
+          "precision": null,
+          "scale": null,
+          "definition": "varchar(255) NOT NULL",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "generated": null,
+          "charset": null,
+          "collation": null,
+          "comment": null
+        },
+        {
+          "name": "creation_date",
+          "type": "datetime",
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "definition": "datetime NOT NULL DEFAULT CURRENT_TIMESTAMP",
+          "nullable": false,
+          "default": "CURRENT_TIMESTAMP",
+          "autoIncrement": false,
+          "generated": null,
+          "charset": null,
+          "collation": null,
+          "comment": null
+        },
+        {
+          "name": "last_update",
+          "type": "datetime",
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "definition": "datetime DEFAULT NULL",
+          "nullable": true,
+          "default": "NULL",
+          "autoIncrement": false,
+          "generated": null,
+          "charset": null,
+          "collation": null,
+          "comment": null
+        },
+        {
+          "name": "last_login",
+          "type": "datetime",
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "definition": "datetime DEFAULT NULL",
+          "nullable": true,
+          "default": "NULL",
+          "autoIncrement": false,
+          "generated": null,
+          "charset": null,
+          "collation": null,
+          "comment": null
+        },
+        {
+          "name": "status",
+          "type": "bit(1)",
+          "length": "1",
+          "precision": null,
+          "scale": null,
+          "definition": "bit(1) DEFAULT b'1'",
+          "nullable": true,
+          "default": "b'1'",
+          "autoIncrement": false,
+          "generated": null,
+          "charset": null,
+          "collation": null,
+          "comment": null
+        }
+      ],
+      "primaryKey": [
+        "ID"
+      ],
+      "indexes": [
+        {
+          "name": "email",
+          "unique": true,
+          "columns": [
+            "email"
+          ]
+        },
+        {
+          "name": "nick",
+          "unique": true,
+          "columns": [
+            "nick"
+          ]
+        }
+      ],
+      "foreignKeys": [],
+      "engine": "InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "rowCount": {
+        "value": 8,
+        "status": "reconstructed from all INSERT tuples; not verified with restored database COUNT(*)",
+        "method": "SQL INSERT tuple count; no UPDATE, DELETE or REPLACE statements detected"
+      }
+    },
+    {
+      "name": "tbc_categories",
+      "columns": [
+        {
+          "name": "ID",
+          "type": "int unsigned",
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "definition": "int unsigned NOT NULL AUTO_INCREMENT",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": true,
+          "generated": null,
+          "charset": null,
+          "collation": null,
+          "comment": null,
+          "key": [
+            "pk"
+          ]
+        },
+        {
+          "name": "name",
+          "type": "varchar(120)",
+          "length": "120",
+          "precision": null,
+          "scale": null,
+          "definition": "varchar(120) NOT NULL",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "generated": null,
+          "charset": null,
+          "collation": null,
+          "comment": null,
+          "key": [
+            "uk"
+          ]
+        },
+        {
+          "name": "description",
+          "type": "text",
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "definition": "text",
+          "nullable": true,
+          "default": null,
+          "autoIncrement": false,
+          "generated": null,
+          "charset": null,
+          "collation": null,
+          "comment": null
+        },
+        {
+          "name": "sup_id_category",
+          "type": "int unsigned",
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "definition": "int unsigned DEFAULT NULL",
+          "nullable": true,
+          "default": "NULL",
+          "autoIncrement": false,
+          "generated": null,
+          "charset": null,
+          "collation": null,
+          "comment": null,
+          "key": [
+            "fk"
+          ]
+        },
+        {
+          "name": "status",
+          "type": "bit(1)",
+          "length": "1",
+          "precision": null,
+          "scale": null,
+          "definition": "bit(1) NOT NULL DEFAULT b'1'",
+          "nullable": false,
+          "default": "b'1'",
+          "autoIncrement": false,
+          "generated": null,
+          "charset": null,
+          "collation": null,
+          "comment": null
+        },
+        {
+          "name": "creation_date",
+          "type": "datetime",
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "definition": "datetime NOT NULL DEFAULT CURRENT_TIMESTAMP",
+          "nullable": false,
+          "default": "CURRENT_TIMESTAMP",
+          "autoIncrement": false,
+          "generated": null,
+          "charset": null,
+          "collation": null,
+          "comment": null
+        },
+        {
+          "name": "last_update",
+          "type": "datetime",
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "definition": "datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP",
+          "nullable": false,
+          "default": "CURRENT_TIMESTAMP",
+          "autoIncrement": false,
+          "generated": null,
+          "charset": null,
+          "collation": null,
+          "comment": null
+        }
+      ],
+      "primaryKey": [
+        "ID"
+      ],
+      "indexes": [
+        {
+          "name": "name",
+          "unique": true,
+          "columns": [
+            "name"
+          ]
+        },
+        {
+          "name": "fk_sup_id_category",
+          "unique": false,
+          "columns": [
+            "sup_id_category"
+          ]
+        }
+      ],
+      "foreignKeys": [
+        {
+          "name": "fk_sup_id_category",
+          "columns": [
+            "sup_id_category"
+          ],
+          "table": "tbc_categories",
+          "referencedColumns": [
+            "ID"
+          ]
+        }
+      ],
+      "engine": "InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "rowCount": {
+        "value": 100,
+        "status": "reconstructed from all INSERT tuples; not verified with restored database COUNT(*)",
+        "method": "SQL INSERT tuple count; no UPDATE, DELETE or REPLACE statements detected"
+      }
+    },
+    {
+      "name": "tbd_products_categories",
+      "columns": [
+        {
+          "name": "category_ID",
+          "type": "int unsigned",
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "definition": "int unsigned NOT NULL",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "generated": null,
+          "charset": null,
+          "collation": null,
+          "comment": null,
+          "key": [
+            "pk",
+            "fk"
+          ]
+        },
+        {
+          "name": "product_ID",
+          "type": "int",
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "definition": "int NOT NULL",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "generated": null,
+          "charset": null,
+          "collation": null,
+          "comment": null,
+          "key": [
+            "pk",
+            "fk"
+          ]
+        },
+        {
+          "name": "status",
+          "type": "bit(1)",
+          "length": "1",
+          "precision": null,
+          "scale": null,
+          "definition": "bit(1) NOT NULL DEFAULT b'1'",
+          "nullable": false,
+          "default": "b'1'",
+          "autoIncrement": false,
+          "generated": null,
+          "charset": null,
+          "collation": null,
+          "comment": null
+        },
+        {
+          "name": "creation_date",
+          "type": "datetime",
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "definition": "datetime NOT NULL DEFAULT CURRENT_TIMESTAMP",
+          "nullable": false,
+          "default": "CURRENT_TIMESTAMP",
+          "autoIncrement": false,
+          "generated": null,
+          "charset": null,
+          "collation": null,
+          "comment": null
+        },
+        {
+          "name": "last_update",
+          "type": "datetime",
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "definition": "datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP",
+          "nullable": false,
+          "default": "CURRENT_TIMESTAMP",
+          "autoIncrement": false,
+          "generated": null,
+          "charset": null,
+          "collation": null,
+          "comment": null
+        }
+      ],
+      "primaryKey": [
+        "category_ID",
+        "product_ID"
+      ],
+      "indexes": [
+        {
+          "name": "fk_product",
+          "unique": false,
+          "columns": [
+            "product_ID"
+          ]
+        }
+      ],
+      "foreignKeys": [
+        {
+          "name": "fk_category",
+          "columns": [
+            "category_ID"
+          ],
+          "table": "tbc_categories",
+          "referencedColumns": [
+            "ID"
+          ]
+        },
+        {
+          "name": "fk_product",
+          "columns": [
+            "product_ID"
+          ],
+          "table": "tb_products",
+          "referencedColumns": [
+            "ID"
+          ]
+        }
+      ],
+      "engine": "InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "rowCount": {
+        "value": 5007,
+        "status": "reconstructed from all INSERT tuples; not verified with restored database COUNT(*)",
+        "method": "SQL INSERT tuple count; no UPDATE, DELETE or REPLACE statements detected"
+      }
+    },
+    {
+      "name": "tbd_produtcs_users_providers",
+      "columns": [
+        {
+          "name": "user_ID",
+          "type": "int",
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "definition": "int NOT NULL",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "generated": null,
+          "charset": null,
+          "collation": null,
+          "comment": null,
+          "key": [
+            "pk",
+            "fk"
+          ]
+        },
+        {
+          "name": "product_ID",
+          "type": "int",
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "definition": "int NOT NULL",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "generated": null,
+          "charset": null,
+          "collation": null,
+          "comment": null,
+          "key": [
+            "pk",
+            "fk"
+          ]
+        },
+        {
+          "name": "type_ownership",
+          "type": "enum('Owner','Reseller','Distributor')",
+          "length": "'Owner','Reseller','Distributor'",
+          "precision": null,
+          "scale": null,
+          "definition": "enum('Owner','Reseller','Distributor') DEFAULT NULL",
+          "nullable": true,
+          "default": "NULL",
+          "autoIncrement": false,
+          "generated": null,
+          "charset": null,
+          "collation": null,
+          "comment": null
+        },
+        {
+          "name": "status",
+          "type": "bit(1)",
+          "length": "1",
+          "precision": null,
+          "scale": null,
+          "definition": "bit(1) NOT NULL DEFAULT b'1'",
+          "nullable": false,
+          "default": "b'1'",
+          "autoIncrement": false,
+          "generated": null,
+          "charset": null,
+          "collation": null,
+          "comment": null
+        },
+        {
+          "name": "avalaible_date",
+          "type": "datetime",
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "definition": "datetime NOT NULL",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "generated": null,
+          "charset": null,
+          "collation": null,
+          "comment": null
+        },
+        {
+          "name": "creation_date",
+          "type": "datetime",
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "definition": "datetime NOT NULL DEFAULT CURRENT_TIMESTAMP",
+          "nullable": false,
+          "default": "CURRENT_TIMESTAMP",
+          "autoIncrement": false,
+          "generated": null,
+          "charset": null,
+          "collation": null,
+          "comment": null
+        },
+        {
+          "name": "last_date",
+          "type": "datetime",
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "definition": "datetime NOT NULL DEFAULT CURRENT_TIMESTAMP",
+          "nullable": false,
+          "default": "CURRENT_TIMESTAMP",
+          "autoIncrement": false,
+          "generated": null,
+          "charset": null,
+          "collation": null,
+          "comment": null
+        }
+      ],
+      "primaryKey": [
+        "user_ID",
+        "product_ID"
+      ],
+      "indexes": [
+        {
+          "name": "fk_products2",
+          "unique": false,
+          "columns": [
+            "product_ID"
+          ]
+        }
+      ],
+      "foreignKeys": [
+        {
+          "name": "fk_products2",
+          "columns": [
+            "product_ID"
+          ],
+          "table": "tb_products",
+          "referencedColumns": [
+            "ID"
+          ]
+        },
+        {
+          "name": "fk_user1",
+          "columns": [
+            "user_ID"
+          ],
+          "table": "tb_users",
+          "referencedColumns": [
+            "ID"
+          ]
+        }
+      ],
+      "engine": "InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "rowCount": {
+        "value": 0,
+        "status": "reconstructed from all INSERT tuples; not verified with restored database COUNT(*)",
+        "method": "SQL INSERT tuple count; no UPDATE, DELETE or REPLACE statements detected"
+      }
+    },
+    {
+      "name": "tbd_users_wishlist_products",
+      "columns": [
+        {
+          "name": "user_ID",
+          "type": "int",
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "definition": "int NOT NULL",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "generated": null,
+          "charset": null,
+          "collation": null,
+          "comment": null,
+          "key": [
+            "pk",
+            "fk"
+          ]
+        },
+        {
+          "name": "product_ID",
+          "type": "int",
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "definition": "int NOT NULL",
+          "nullable": false,
+          "default": null,
+          "autoIncrement": false,
+          "generated": null,
+          "charset": null,
+          "collation": null,
+          "comment": null,
+          "key": [
+            "pk",
+            "fk"
+          ]
+        },
+        {
+          "name": "status",
+          "type": "bit(1)",
+          "length": "1",
+          "precision": null,
+          "scale": null,
+          "definition": "bit(1) NOT NULL DEFAULT b'1'",
+          "nullable": false,
+          "default": "b'1'",
+          "autoIncrement": false,
+          "generated": null,
+          "charset": null,
+          "collation": null,
+          "comment": null
+        },
+        {
+          "name": "creation_date",
+          "type": "datetime",
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "definition": "datetime NOT NULL DEFAULT CURRENT_TIMESTAMP",
+          "nullable": false,
+          "default": "CURRENT_TIMESTAMP",
+          "autoIncrement": false,
+          "generated": null,
+          "charset": null,
+          "collation": null,
+          "comment": null
+        },
+        {
+          "name": "last_update",
+          "type": "datetime",
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "definition": "datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP",
+          "nullable": false,
+          "default": "CURRENT_TIMESTAMP",
+          "autoIncrement": false,
+          "generated": null,
+          "charset": null,
+          "collation": null,
+          "comment": null
+        }
+      ],
+      "primaryKey": [
+        "user_ID",
+        "product_ID"
+      ],
+      "indexes": [
+        {
+          "name": "fk_products1",
+          "unique": false,
+          "columns": [
+            "product_ID"
+          ]
+        }
+      ],
+      "foreignKeys": [
+        {
+          "name": "fk_products1",
+          "columns": [
+            "product_ID"
+          ],
+          "table": "tb_products",
+          "referencedColumns": [
+            "ID"
+          ]
+        },
+        {
+          "name": "fk_user2",
+          "columns": [
+            "user_ID"
+          ],
+          "table": "tb_users",
+          "referencedColumns": [
+            "ID"
+          ]
+        }
+      ],
+      "engine": "InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "rowCount": {
+        "value": 0,
+        "status": "reconstructed from all INSERT tuples; not verified with restored database COUNT(*)",
+        "method": "SQL INSERT tuple count; no UPDATE, DELETE or REPLACE statements detected"
+      }
+    }
+  ],
+  "views": [
+    {
+      "name": "vw_total_products_by_category",
+      "definition": "with recursive `category_tree` as (select `c`.`ID` AS `category_ID`,`c`.`sup_id_category` AS `parent_ID`,cast(`c`.`name` as char(2000) charset utf8mb4) AS `category_path`,1 AS `category_level` from `tbc_categories` `c` where ((`c`.`sup_id_category` is null) or (`c`.`sup_id_category` = 0)) union all select `c`.`ID` AS `category_ID`,`c`.`sup_id_category` AS `parent_ID`,cast(concat(`ct`.`category_path`,' → ',`c`.`name`) as char(2000) charset utf8mb4) AS `category_path`,(`ct`.`category_level` + 1) AS `ct.category_level + 1` from (`tbc_categories` `c` join `category_tree` `ct` on((`c`.`sup_id_category` = `ct`.`category_ID`)))) select `ct`.`category_ID` AS `category_ID`,`ct`.`category_path` AS `category_path`,`ct`.`category_level` AS `category_level`,count(distinct `p`.`ID`) AS `total_products`,count(distinct (case when ((`p`.`status` = 0x01) and (`r`.`status` = 0x01)) then `p`.`ID` end)) AS `total_active_products`,count(distinct (case when ((`p`.`status` = 0x00) or (`r`.`status` = 0x00)) then `p`.`ID` end)) AS `total_inactive_products`,(select count(0) from `tb_products` `p2` where exists(select 1 from `tbd_products_categories` `r2` where (`r2`.`product_ID` = `p2`.`ID`)) is false) AS `total_uncategorized_products` from ((`category_tree` `ct` left join `tbd_products_categories` `r` on((`r`.`category_ID` = `ct`.`category_ID`))) left join `tb_products` `p` on((`p`.`ID` = `r`.`product_ID`))) group by `ct`.`category_ID`,`ct`.`category_path`,`ct`.`category_level`",
+      "columns": [
+        "category_ID",
+        "parent_ID",
+        "category_path",
+        "category_level",
+        "category_ID",
+        "parent_ID",
+        "category_path",
+        "ct.category_level + 1",
+        "category_ID",
+        "category_path",
+        "category_level",
+        "total_products",
+        "total_active_products",
+        "total_inactive_products",
+        "total_uncategorized_products"
+      ]
+    },
+    {
+      "name": "vw_trazabilidad_categories",
+      "definition": "select `l`.`ID` AS `log_id`,`c`.`ID` AS `category_id`,`l`.`table_operation` AS `operation`,`l`.`db_user` AS `db_user`,substring_index(`l`.`db_user`,'@',1) AS `username`,coalesce((select group_concat(distinct `re`.`FROM_USER` order by `re`.`FROM_USER` ASC separator ', ') from `mysql`.`role_edges` `re` where (`re`.`TO_USER` = substring_index(`l`.`db_user`,'@',1))),'Sin rol asignado') AS `roles`,`l`.`table_description` AS `operation_description`,`l`.`operation_date` AS `operation_date`,`l`.`operation_status` AS `operation_status` from (`tb_logs` `l` left join `tbc_categories` `c` on((`l`.`table_description` = concat('Se creó la categoría: ',`c`.`name`)))) where (`l`.`table_name` = 'tbc_categories')",
+      "columns": [
+        "log_id",
+        "category_id",
+        "operation",
+        "db_user",
+        "username",
+        "roles",
+        "operation_description",
+        "operation_date",
+        "operation_status"
+      ]
+    },
+    {
+      "name": "vw_trazabilidad_categorizacion_productos",
+      "definition": "select `l`.`product_id_extracted` AS `id_producto`,`p`.`nombre` AS `producto`,(case when (locate('category_ID: ',`l`.`table_description`) > 0) then cast(trim(substring_index(substring_index(`l`.`table_description`,'category_ID: ',-(1)),';',1)) as unsigned) else NULL end) AS `id_categoria`,`c`.`name` AS `categoria`,(case when (locate('status: ',`l`.`table_description`) > 0) then cast(trim(substring_index(substring_index(`l`.`table_description`,'status: ',-(1)),';',1)) as unsigned) else cast(`r`.`status` as unsigned) end) AS `estado`,`l`.`db_user` AS `insertado_por`,`l`.`table_operation` AS `operacion`,`l`.`table_description` AS `descripcion_operacion`,`l`.`operation_date` AS `fecha_operacion` from (((`tb_logs` `l` left join `tb_products` `p` on((`p`.`ID` = `l`.`product_id_extracted`))) left join `tbc_categories` `c` on((`c`.`ID` = (case when (locate('category_ID: ',`l`.`table_description`) > 0) then cast(trim(substring_index(substring_index(`l`.`table_description`,'category_ID: ',-(1)),';',1)) as unsigned) else NULL end)))) left join `tbd_products_categories` `r` on(((`r`.`product_ID` = `l`.`product_id_extracted`) and (`r`.`category_ID` = `c`.`ID`)))) where (`l`.`table_name` = 'tbd_products_categories')",
+      "columns": [
+        "id_producto",
+        "producto",
+        "id_categoria",
+        "categoria",
+        "estado",
+        "insertado_por",
+        "operacion",
+        "descripcion_operacion",
+        "fecha_operacion"
+      ]
+    },
+    {
+      "name": "vw_trazabilidad_products",
+      "definition": "select `p`.`ID` AS `id`,`p`.`nombre` AS `nombre`,`p`.`descripcion` AS `descripcion`,`p`.`precio` AS `precio`,`p`.`stock` AS `stock`,`p`.`categoria` AS `categoria`,`p`.`creation_date` AS `creation_date`,`p`.`last_update` AS `last_update`,`p`.`status` AS `status`,`b`.`db_user` AS `inserted_by`,coalesce(group_concat(distinct `re`.`FROM_USER` order by `re`.`FROM_USER` ASC separator ', '),'Sin rol') AS `roles`,`b`.`table_description` AS `operation_description`,`b`.`operation_date` AS `operation_date`,`b`.`operation_status` AS `operation_status` from ((`tb_products` `p` join `tb_logs` `b` on((`b`.`table_description` like concat('%ID: ',`p`.`ID`,',%')))) left join `mysql`.`role_edges` `re` on((`re`.`TO_USER` = substring_index(`b`.`db_user`,'@',1)))) where ((`b`.`table_operation` = 'Create') and (`b`.`table_name` = 'tb_products')) group by `p`.`ID`,`p`.`nombre`,`p`.`descripcion`,`p`.`precio`,`p`.`stock`,`p`.`categoria`,`p`.`creation_date`,`p`.`last_update`,`p`.`status`,`b`.`db_user`,`b`.`table_description`,`b`.`operation_date`,`b`.`operation_status`",
+      "columns": [
+        "id",
+        "nombre",
+        "descripcion",
+        "precio",
+        "stock",
+        "categoria",
+        "creation_date",
+        "last_update",
+        "status",
+        "inserted_by",
+        "roles",
+        "operation_description",
+        "operation_date",
+        "operation_status"
+      ]
+    },
+    {
+      "name": "vw_trazabilidad_users",
+      "definition": "select `u`.`ID` AS `id`,`u`.`email` AS `email`,`u`.`nick` AS `nick`,`u`.`creation_date` AS `creation_date`,`u`.`last_update` AS `last_update`,`u`.`last_login` AS `last_login`,`u`.`status` AS `status`,`b`.`db_user` AS `inserted_by`,coalesce(group_concat(distinct `re`.`FROM_USER` order by `re`.`FROM_USER` ASC separator ', '),'Sin rol') AS `roles`,`b`.`table_description` AS `operation_description`,`b`.`operation_date` AS `operation_date`,`b`.`operation_status` AS `operation_status` from ((`tb_users` `u` join `tb_logs` `b` on((`b`.`table_description` like concat('%ID=',`u`.`ID`,',%')))) left join `mysql`.`role_edges` `re` on((`re`.`TO_USER` = substring_index(`b`.`db_user`,'@',1)))) where ((`b`.`table_operation` = 'Create') and (`b`.`table_name` = 'tb_users')) group by `u`.`ID`,`u`.`email`,`u`.`nick`,`u`.`creation_date`,`u`.`last_update`,`u`.`last_login`,`u`.`status`,`b`.`db_user`,`b`.`table_description`,`b`.`operation_date`,`b`.`operation_status`",
+      "columns": [
+        "id",
+        "email",
+        "nick",
+        "creation_date",
+        "last_update",
+        "last_login",
+        "status",
+        "inserted_by",
+        "roles",
+        "operation_description",
+        "operation_date",
+        "operation_status"
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "name": "tb_carts_ibfk_1",
+      "fromTable": "tb_carts",
+      "fromColumns": [
+        "user_ID"
+      ],
+      "toTable": "tb_users",
+      "toColumns": [
+        "ID"
+      ],
+      "verified": true,
+      "fromCardinality": "one",
+      "fromOptional": false,
+      "toCardinality": "one"
+    },
+    {
+      "name": "fk_sup_id_category",
+      "fromTable": "tbc_categories",
+      "fromColumns": [
+        "sup_id_category"
+      ],
+      "toTable": "tbc_categories",
+      "toColumns": [
+        "ID"
+      ],
+      "verified": true,
+      "fromCardinality": "many",
+      "fromOptional": true,
+      "toCardinality": "one"
+    },
+    {
+      "name": "fk_category",
+      "fromTable": "tbd_products_categories",
+      "fromColumns": [
+        "category_ID"
+      ],
+      "toTable": "tbc_categories",
+      "toColumns": [
+        "ID"
+      ],
+      "verified": true,
+      "fromCardinality": "one",
+      "fromOptional": false,
+      "toCardinality": "one"
+    },
+    {
+      "name": "fk_product",
+      "fromTable": "tbd_products_categories",
+      "fromColumns": [
+        "product_ID"
+      ],
+      "toTable": "tb_products",
+      "toColumns": [
+        "ID"
+      ],
+      "verified": true,
+      "fromCardinality": "one",
+      "fromOptional": false,
+      "toCardinality": "one"
+    },
+    {
+      "name": "fk_products2",
+      "fromTable": "tbd_produtcs_users_providers",
+      "fromColumns": [
+        "product_ID"
+      ],
+      "toTable": "tb_products",
+      "toColumns": [
+        "ID"
+      ],
+      "verified": true,
+      "fromCardinality": "one",
+      "fromOptional": false,
+      "toCardinality": "one"
+    },
+    {
+      "name": "fk_user1",
+      "fromTable": "tbd_produtcs_users_providers",
+      "fromColumns": [
+        "user_ID"
+      ],
+      "toTable": "tb_users",
+      "toColumns": [
+        "ID"
+      ],
+      "verified": true,
+      "fromCardinality": "one",
+      "fromOptional": false,
+      "toCardinality": "one"
+    },
+    {
+      "name": "fk_products1",
+      "fromTable": "tbd_users_wishlist_products",
+      "fromColumns": [
+        "product_ID"
+      ],
+      "toTable": "tb_products",
+      "toColumns": [
+        "ID"
+      ],
+      "verified": true,
+      "fromCardinality": "one",
+      "fromOptional": false,
+      "toCardinality": "one"
+    },
+    {
+      "name": "fk_user2",
+      "fromTable": "tbd_users_wishlist_products",
+      "fromColumns": [
+        "user_ID"
+      ],
+      "toTable": "tb_users",
+      "toColumns": [
+        "ID"
+      ],
+      "verified": true,
+      "fromCardinality": "one",
+      "fromOptional": false,
+      "toCardinality": "one"
+    }
+  ],
+  "inferredRelationships": [],
+  "summary": {
+    "physicalTables": 8,
+    "views": 5,
+    "foreignKeys": 8,
+    "columns": 54,
+    "verifiedTableCounts": 0,
+    "reconstructedTableCounts": 8,
+    "rowSum": 20257,
+    "pendingChecks": 8,
+    "pendingNote": "Conteos reconstruidos por análisis completo de INSERT; pendientes de verificación directa con COUNT(*) sobre una restauración."
+  },
+  "verification": {
+    "restoreAttempted": false,
+    "reason": "No se encontró mysql ni mysqld. Conteos obtenidos contando exhaustivamente tuplas SQL en INSERT. Sin sentencias UPDATE, DELETE ni REPLACE.",
+    "insertStatements": 6,
+    "dataMutations": {
+      "UPDATE": 0,
+      "DELETE": 0,
+      "REPLACE": 0
+    }
+  }
+}

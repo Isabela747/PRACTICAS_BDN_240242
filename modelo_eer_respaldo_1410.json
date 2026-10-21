@@ -1,0 +1,475 @@
+{
+  "schema_version": 1,
+  "diagram_type": "erd",
+  "meta": {
+    "title": "Modelo EER de respaldo_1410.sql",
+    "locale": "es",
+    "output": "modelo_eer_respaldo_1410.html",
+    "quality_profile": "standard",
+    "animation": "trace"
+  },
+  "layout": {
+    "mode": "grid",
+    "gapY": 48,
+    "entityW": 260
+  },
+  "entities": [
+    {
+      "id": "e0",
+      "label": "tb_carts",
+      "sublabel": "0 filas · 5 columnas",
+      "tag": "respaldo",
+      "row": 0,
+      "col": 0,
+      "width": 260,
+      "attributes": [
+        {
+          "name": "ID",
+          "type": "int unsigned",
+          "key": [
+            "pk"
+          ]
+        },
+        {
+          "name": "user_ID",
+          "type": "int",
+          "key": [
+            "fk",
+            "uk"
+          ],
+          "references": "tb_users.ID"
+        },
+        {
+          "name": "status",
+          "type": "bit(1)"
+        },
+        {
+          "name": "creation_date",
+          "type": "datetime"
+        },
+        {
+          "name": "last_update",
+          "type": "datetime"
+        }
+      ]
+    },
+    {
+      "id": "e1",
+      "label": "tb_logs",
+      "sublabel": "10135 filas · 8 columnas",
+      "tag": "respaldo",
+      "row": 1,
+      "col": 0,
+      "width": 260,
+      "attributes": [
+        {
+          "name": "ID",
+          "type": "int",
+          "key": [
+            "pk"
+          ]
+        },
+        {
+          "name": "table_name",
+          "type": "varchar(80)"
+        },
+        {
+          "name": "table_operation",
+          "type": "enum('Create','Read','Update','Delete')"
+        },
+        {
+          "name": "db_user",
+          "type": "varchar(80)"
+        },
+        {
+          "name": "operation_date",
+          "type": "datetime"
+        },
+        {
+          "name": "table_description",
+          "type": "text"
+        },
+        {
+          "name": "operation_status",
+          "type": "bit(1)"
+        },
+        {
+          "name": "product_id_extracted",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "id": "e2",
+      "label": "tb_products",
+      "sublabel": "5007 filas · 9 columnas",
+      "tag": "respaldo",
+      "row": 2,
+      "col": 0,
+      "width": 260,
+      "attributes": [
+        {
+          "name": "ID",
+          "type": "int",
+          "key": [
+            "pk"
+          ]
+        },
+        {
+          "name": "nombre",
+          "type": "varchar(100)"
+        },
+        {
+          "name": "descripcion",
+          "type": "varchar(255)"
+        },
+        {
+          "name": "precio",
+          "type": "decimal(10,2)"
+        },
+        {
+          "name": "stock",
+          "type": "int"
+        },
+        {
+          "name": "categoria",
+          "type": "varchar(100)"
+        },
+        {
+          "name": "creation_date",
+          "type": "datetime"
+        },
+        {
+          "name": "last_update",
+          "type": "datetime"
+        },
+        {
+          "name": "status",
+          "type": "bit(1)"
+        }
+      ]
+    },
+    {
+      "id": "e3",
+      "label": "tb_users",
+      "sublabel": "8 filas · 8 columnas",
+      "tag": "respaldo",
+      "row": 3,
+      "col": 0,
+      "width": 260,
+      "attributes": [
+        {
+          "name": "ID",
+          "type": "int",
+          "key": [
+            "pk"
+          ]
+        },
+        {
+          "name": "email",
+          "type": "varchar(100)",
+          "key": [
+            "uk"
+          ]
+        },
+        {
+          "name": "nick",
+          "type": "varchar(50)",
+          "key": [
+            "uk"
+          ]
+        },
+        {
+          "name": "password",
+          "type": "varchar(255)"
+        },
+        {
+          "name": "creation_date",
+          "type": "datetime"
+        },
+        {
+          "name": "last_update",
+          "type": "datetime"
+        },
+        {
+          "name": "last_login",
+          "type": "datetime"
+        },
+        {
+          "name": "status",
+          "type": "bit(1)"
+        }
+      ]
+    },
+    {
+      "id": "e4",
+      "label": "tbc_categories",
+      "sublabel": "100 filas · 7 columnas",
+      "tag": "respaldo",
+      "row": 4,
+      "col": 0,
+      "width": 260,
+      "attributes": [
+        {
+          "name": "ID",
+          "type": "int unsigned",
+          "key": [
+            "pk"
+          ]
+        },
+        {
+          "name": "name",
+          "type": "varchar(120)",
+          "key": [
+            "uk"
+          ]
+        },
+        {
+          "name": "description",
+          "type": "text"
+        },
+        {
+          "name": "sup_id_category",
+          "type": "int unsigned",
+          "key": [
+            "fk"
+          ],
+          "references": "tbc_categories.ID"
+        },
+        {
+          "name": "status",
+          "type": "bit(1)"
+        },
+        {
+          "name": "creation_date",
+          "type": "datetime"
+        },
+        {
+          "name": "last_update",
+          "type": "datetime"
+        }
+      ]
+    },
+    {
+      "id": "e5",
+      "label": "tbd_products_categories",
+      "sublabel": "5007 filas · 5 columnas",
+      "tag": "respaldo",
+      "row": 5,
+      "col": 0,
+      "width": 260,
+      "attributes": [
+        {
+          "name": "category_ID",
+          "type": "int unsigned",
+          "key": [
+            "pk",
+            "fk"
+          ],
+          "references": "tbc_categories.ID"
+        },
+        {
+          "name": "product_ID",
+          "type": "int",
+          "key": [
+            "pk",
+            "fk"
+          ],
+          "references": "tb_products.ID"
+        },
+        {
+          "name": "status",
+          "type": "bit(1)"
+        },
+        {
+          "name": "creation_date",
+          "type": "datetime"
+        },
+        {
+          "name": "last_update",
+          "type": "datetime"
+        }
+      ]
+    },
+    {
+      "id": "e6",
+      "label": "tbd_produtcs_users_providers",
+      "sublabel": "0 filas · 7 columnas",
+      "tag": "respaldo",
+      "row": 6,
+      "col": 0,
+      "width": 260,
+      "attributes": [
+        {
+          "name": "user_ID",
+          "type": "int",
+          "key": [
+            "pk",
+            "fk"
+          ],
+          "references": "tb_users.ID"
+        },
+        {
+          "name": "product_ID",
+          "type": "int",
+          "key": [
+            "pk",
+            "fk"
+          ],
+          "references": "tb_products.ID"
+        },
+        {
+          "name": "type_ownership",
+          "type": "enum('Owner','Reseller','Distributor')"
+        },
+        {
+          "name": "status",
+          "type": "bit(1)"
+        },
+        {
+          "name": "avalaible_date",
+          "type": "datetime"
+        },
+        {
+          "name": "creation_date",
+          "type": "datetime"
+        },
+        {
+          "name": "last_date",
+          "type": "datetime"
+        }
+      ]
+    },
+    {
+      "id": "e7",
+      "label": "tbd_users_wishlist_products",
+      "sublabel": "0 filas · 5 columnas",
+      "tag": "respaldo",
+      "row": 7,
+      "col": 0,
+      "width": 260,
+      "attributes": [
+        {
+          "name": "user_ID",
+          "type": "int",
+          "key": [
+            "pk",
+            "fk"
+          ],
+          "references": "tb_users.ID"
+        },
+        {
+          "name": "product_ID",
+          "type": "int",
+          "key": [
+            "pk",
+            "fk"
+          ],
+          "references": "tb_products.ID"
+        },
+        {
+          "name": "status",
+          "type": "bit(1)"
+        },
+        {
+          "name": "creation_date",
+          "type": "datetime"
+        },
+        {
+          "name": "last_update",
+          "type": "datetime"
+        }
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r0",
+      "from": "e0",
+      "to": "e3",
+      "label": "tb_carts_ibfk_1 · user_ID → ID",
+      "fromCardinality": "one",
+      "toCardinality": "one",
+      "fromOptional": false,
+      "identifying": false,
+      "variant": "dashed"
+    },
+    {
+      "id": "r1",
+      "from": "e4",
+      "to": "e4",
+      "label": "fk_sup_id_category · sup_id_category → ID",
+      "fromCardinality": "many",
+      "toCardinality": "one",
+      "fromOptional": true,
+      "identifying": false,
+      "variant": "dashed"
+    },
+    {
+      "id": "r2",
+      "from": "e5",
+      "to": "e4",
+      "label": "fk_category · category_ID → ID",
+      "fromCardinality": "one",
+      "toCardinality": "one",
+      "fromOptional": false,
+      "identifying": false,
+      "variant": "dashed"
+    },
+    {
+      "id": "r3",
+      "from": "e5",
+      "to": "e2",
+      "label": "fk_product · product_ID → ID",
+      "fromCardinality": "one",
+      "toCardinality": "one",
+      "fromOptional": false,
+      "identifying": false,
+      "variant": "dashed"
+    },
+    {
+      "id": "r4",
+      "from": "e6",
+      "to": "e2",
+      "label": "fk_products2 · product_ID → ID",
+      "fromCardinality": "one",
+      "toCardinality": "one",
+      "fromOptional": false,
+      "identifying": false,
+      "variant": "dashed"
+    },
+    {
+      "id": "r5",
+      "from": "e6",
+      "to": "e3",
+      "label": "fk_user1 · user_ID → ID",
+      "fromCardinality": "one",
+      "toCardinality": "one",
+      "fromOptional": false,
+      "identifying": false,
+      "variant": "dashed"
+    },
+    {
+      "id": "r6",
+      "from": "e7",
+      "to": "e2",
+      "label": "fk_products1 · product_ID → ID",
+      "fromCardinality": "one",
+      "toCardinality": "one",
+      "fromOptional": false,
+      "identifying": false,
+      "variant": "dashed"
+    },
+    {
+      "id": "r7",
+      "from": "e7",
+      "to": "e3",
+      "label": "fk_user2 · user_ID → ID",
+      "fromCardinality": "one",
+      "toCardinality": "one",
+      "fromOptional": false,
+      "identifying": false,
+      "variant": "dashed"
+    }
+  ]
+}
