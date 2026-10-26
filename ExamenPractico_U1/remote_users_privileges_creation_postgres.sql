@@ -109,6 +109,22 @@ ON TABLE public.tb_products TO seller;
 GRANT USAGE, SELECT
 ON ALL SEQUENCES IN SCHEMA public TO seller;
 
+
+GRANT INSERT ON TABLE public.tb_users
+TO "jhon.ibarra";
+GRANT USAGE, SELECT, UPDATE ON SEQUENCE tb_users_id_seq TO jhon.ibarra;
+GRANT INSERT ON TABLE public.tb_logs
+TO "jhon.ibarra";
+
+GRANT USAGE ON SEQUENCE public.tb_logs_id_seq
+TO "jhon.ibarra";
+
+
+GRANT INSERT ON TABLE public.tb_logs
+TO "dara.gomez";
+
+GRANT USAGE ON SEQUENCE public.tb_logs_id_seq
+TO "dara.gomez";
 -- 8. ASIGNAR ROLES A LOS USUARIOS
 
 GRANT superadmin TO "margaret.rojas";
