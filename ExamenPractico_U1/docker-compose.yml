@@ -1,4 +1,3 @@
-version: '3.8'
 
 services:
   postgres_mago:
@@ -6,11 +5,11 @@ services:
     container_name: postgres_mago
     restart: always
     environment:
-      POSTGRES_USER: mago
-      POSTGRES_PASSWORD: "240242"
-      POSTGRES_DB: db_240242
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
     ports:
-      - "40242:5432"
+      - "${POSTGRES_PORT}:5432"
     volumes:
       - postgres_data_mago:/var/lib/postgresql/data
 
@@ -19,12 +18,12 @@ services:
     container_name: mysql_mago
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: "240242"
-      MYSQL_DATABASE: db_40243
-      MYSQL_USER: mago
-      MYSQL_PASSWORD: "240242"
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     ports:
-      - "40243:3306"
+      - "${MYSQL_PORT}:3306"
     volumes:
       - mysql_data_mago:/var/lib/mysql
 
@@ -33,11 +32,11 @@ services:
     container_name: pgadmin_mago
     restart: always
     environment:
-      PGADMIN_DEFAULT_EMAIL: mago@proyectos-integradores-7b-itiid.tech
-      PGADMIN_DEFAULT_PASSWORD: "240242"
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
       PGADMIN_CONFIG_SERVER_MODE: "True"
     ports:
-      - "40241:80"
+      - "${PGADMIN_PORT}:80"
     depends_on:
       - postgres_mago
 
