@@ -190,9 +190,11 @@ TO 'app_mobile'@'%';
    sp_register_new_user en db_test_7b.
 */
 
+/*
 GRANT EXECUTE
 ON PROCEDURE db_test_7b.sp_register_new_user
 TO 'user_not_registered';
+*/
 
 
 /* =====================================================
