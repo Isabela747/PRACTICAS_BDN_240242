@@ -152,13 +152,13 @@ Consulta los documentos interactivos del proyecto:
 
 Explora las 25 tablas, sus columnas, restricciones, estadísticas y comparación entre versiones.
 
-**[Consultar Diccionario de Datos](http://127.0.0.1:5500/diccionario_datos/diccionario_datos_interactivo.html)**
+**[Consultar Diccionario de Datos](https://isabela747.github.io/PRACTICAS_BDN_240242/diccionario_datos/diccionario_datos_interactivo.html)**
 
 ###  Modelo entidad-relación
 
 Visualiza las entidades, atributos, claves primarias, claves foráneas y relaciones de la base de datos.
 
-**[Consultar Modelo Entidad-Relación](http://127.0.0.1:5500/modelo_eer_respaldo_1410.html)**
+**[Consultar Modelo Entidad-Relación](https://isabela747.github.io/PRACTICAS_BDN_240242/modelo_eer_respaldo_1410.html)**
 
 ---
 
