@@ -112,8 +112,8 @@ Cada escenario permite trabajar con las operaciones correspondientes y comprobar
 
 Los siguientes documentos complementan la estructura y el funcionamiento de la base de datos:
 
-- **Diccionario de datos:** [Agregar aquí el enlace al diccionario de datos](PEGAR_LINK_DICCIONARIO)
-- **Modelo entidad-relación:** [Agregar aquí el enlace al modelo entidad-relación](PEGAR_LINK_MODELO_ER)
+- **Diccionario de datos:** [Diccionario de datos (incluye respaldo10)](Practica_04/diccionario_datos_interactivo.html)
+- **Modelo entidad-relación:** [Modelo entidad-relación (incluye respaldo10)](Practica_04/modelo_eer_respaldo_1410.html)
 
 ## Tecnologías utilizadas
 
@@ -137,3 +137,14 @@ Mediante la incorporación de nuevos campos, relaciones, triggers y reglas de in
 
 Con estas modificaciones, la base de datos cuenta con una estructura preparada para realizar y verificar los distintos escenarios de simulación de compra.
 
+
+## Documentación técnica actualizada de PRACTICA04
+
+Estos artefactos se generan desde `Practica_04/backups/respaldo10.sql` y documentan el esquema exportado: 26 tablas, 234 columnas y 38 claves foráneas declaradas.
+
+- [Diccionario de datos interactivo](Practica_04/diccionario_datos_interactivo.html): búsqueda por tabla, columna y tipo; incluye nulabilidad, valores predeterminados y claves.
+- [Modelo entidad-relación](Practica_04/modelo_eer_respaldo_1410.html): entidades, relaciones FK y detalle de claves.
+- [Diccionario en CSV](Practica_04/diccionario_datos_db_test_7b_columnas.csv): una fila por columna con definición y referencias.
+- Generador reproducible: `Practica_04/scripts/generar_documentacion.js` (Node.js).
+
+Para regenerar la documentación después de actualizar el respaldo, ejecuta `node Practica_04/scripts/generar_documentacion.js` desde la raíz del repositorio.
