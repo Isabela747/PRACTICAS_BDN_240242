@@ -108,12 +108,10 @@ La práctica contempla diferentes escenarios para comprobar el funcionamiento de
 
 Cada escenario permite trabajar con las operaciones correspondientes y comprobar las relaciones entre las tablas involucradas.
 
-## Documentación técnica
+## Documentación técnica actualizada de PRACTICA04
 
-Los siguientes documentos complementan la estructura y el funcionamiento de la base de datos:
-
-- **Diccionario de datos:** [Diccionario de datos (incluye respaldo10)](Practica_04/diccionario_datos_interactivo.html)
-- **Modelo entidad-relación:** [Modelo entidad-relación (incluye respaldo10)](Practica_04/modelo_eer_respaldo_1410.html)
+- [Diccionario de datos interactivo](https://isabela747.github.io/PRACTICAS_BDN_240242/Practica_04/diccionario_datos_interactivo.html?utm_source=chatgpt.com): búsqueda por tabla, columna y tipo; incluye nulabilidad, valores predeterminados y claves.
+- [Modelo entidad-relación](https://isabela747.github.io/PRACTICAS_BDN_240242/Practica_04/modelo_eer_respaldo_1410.html?utm_source=chatgpt.com): entidades, relaciones FK y detalle de claves.
 
 ## Tecnologías utilizadas
 
@@ -138,10 +136,4 @@ Mediante la incorporación de nuevos campos, relaciones, triggers y reglas de in
 Con estas modificaciones, la base de datos cuenta con una estructura preparada para realizar y verificar los distintos escenarios de simulación de compra.
 
 
-## Documentación técnica actualizada de PRACTICA04
-
-Estos artefactos se generan desde `Practica_04/backups/respaldo10.sql` y documentan el esquema exportado: 26 tablas, 234 columnas y 38 claves foráneas declaradas.
-
-- [Diccionario de datos interactivo](https://isabela747.github.io/PRACTICAS_BDN_240242/Practica_04/diccionario_datos_interactivo.html?utm_source=chatgpt.com): búsqueda por tabla, columna y tipo; incluye nulabilidad, valores predeterminados y claves.
-- [Modelo entidad-relación](https://isabela747.github.io/PRACTICAS_BDN_240242/Practica_04/modelo_eer_respaldo_1410.html?utm_source=chatgpt.com): entidades, relaciones FK y detalle de claves.
 
