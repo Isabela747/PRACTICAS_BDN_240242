@@ -110,8 +110,8 @@ Cada escenario permite trabajar con las operaciones correspondientes y comprobar
 
 ## Documentación técnica actualizada de PRACTICA04
 
-- [Diccionario de datos interactivo](https://isabela747.github.io/PRACTICAS_BDN_240242/Practica_04/diccionario_datos_interactivo.html?utm_source=chatgpt.com): búsqueda por tabla, columna y tipo; incluye nulabilidad, valores predeterminados y claves.
-- [Modelo entidad-relación](https://isabela747.github.io/PRACTICAS_BDN_240242/Practica_04/modelo_eer_respaldo_1410.html?utm_source=chatgpt.com): entidades, relaciones FK y detalle de claves.
+- [Diccionario de datos interactivo](https://isabela747.github.io/PRACTICAS_BDN_240242/Practica_04/diccionario_datos_interactivo.html): búsqueda por tabla, columna y tipo; incluye nulabilidad, valores predeterminados y claves.
+- [Modelo entidad-relación](https://isabela747.github.io/PRACTICAS_BDN_240242/Practica_04/modelo_eer_respaldo_1410.html): entidades, relaciones FK y detalle de claves.
 
 ## Tecnologías utilizadas
 
